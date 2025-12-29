@@ -42,7 +42,7 @@ class PostCRUDL extends Controller
         // store
         Post::create($credentials);
         // return redirect ('/posts');
-        return redirect('/profile');
+        return redirect('/profile')->with('success', 'you have successfully created a new post');
     }
 
     public function edit(Post $post)
@@ -65,7 +65,7 @@ class PostCRUDL extends Controller
         // update
         $post->update($credentials);
         // redirect to the post
-        return redirect('/posts/'. $post->id);
+        return redirect('/posts/'. $post->id)->with('success', 'you have successfully updated your post');
     }
 
     public function destroy(Post $post)
@@ -75,6 +75,6 @@ class PostCRUDL extends Controller
         $post->delete();
         // redirect
 
-        return redirect('/posts');
+        return redirect('/posts')->with('success', 'you have successfully deleted a post');
     }
 }

@@ -16,13 +16,13 @@ class EmailVerificationController extends Controller
     {
         $request->fulfill();
 
-        return redirect('/posts');
+        return redirect('/posts')->with('success', 'your email has been successfully verified');
     }
 
     public function send()
     {
         request()->user()->sendEmailVerificationNotification();
 
-        return back()->with(['messages' => 'email sent successfully']);
+        return back()->with(['success' => 'email sent successfully']);
     }
 }

@@ -69,7 +69,7 @@ class PasswordResetController extends Controller
 
         // check if it was updated successfully and redirect back with or without errors
         return $status === Password::PASSWORD_RESET ?
-        redirect('/reset-password-message')->with(['status' => __($status)]) :
+        redirect('/reset-password-message')->with(['success' => __($status)]) :
         back()->withErrors(['email' => __($status)]);
 
     }

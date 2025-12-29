@@ -36,14 +36,14 @@ class ProfileController extends Controller
         // update
         $user->update($credentials);
 
-        return redirect('/profile');
+        return redirect('/profile')->with('success', 'you have successfully updated your profile');
 
     }
 
     public function destroy()
     {
         /** @var \App\Models\User $user */
-        
+        $user = Auth::user();
         request()->validate([
             'password' => ['required', 'current_password']
         ]);
@@ -51,7 +51,7 @@ class ProfileController extends Controller
         Auth::logout();
         $user->delete();
 
-        return redirect('/login');
+        return redirect('/login')->with('success', 'you have successfully deleted your account');
     }
 
     public function view()

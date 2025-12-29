@@ -38,7 +38,7 @@ class RegisterController extends Controller
         // regenerate session
         request()->session()->regenerate();
         // redirect
-        return redirect('/posts');
+        return redirect('/posts')->with('success', 'you have been registered successfully');
     }
 
 }

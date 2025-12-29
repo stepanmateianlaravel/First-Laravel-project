@@ -30,7 +30,7 @@ class SessionController extends Controller
         // regenerate session
         request()->session()->regenerate();
         // redirect to user panel
-        return redirect('/profile');
+        return redirect('/profile')->with('success', 'you logged in successfully');
     }
 
     public function destroy()
@@ -39,6 +39,6 @@ class SessionController extends Controller
 
         request()->session()->invalidate();
 
-        return redirect('/login');
+        return redirect('/login')->with('success', 'you have logged out of your account');
     }
 }
