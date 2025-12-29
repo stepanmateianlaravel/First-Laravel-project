@@ -14,8 +14,8 @@ use App\Models\User;
 Route::view('/', 'home');
 Route::view('/reset-password-message', 'auth.reset-password-message')->middleware('guest');
 Route::view('/profile-delete', 'auth.profile-delete')->middleware('auth');
-Route::view('/terms-of-service', 'terms-of-service')->middleware('auth');
-Route::view('/privacy-policy', 'privacy-policy')->middleware('auth');
+Route::view('/terms-of-service', 'terms-of-service');
+Route::view('/privacy-policy', 'privacy-policy');
 
 // registration
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
