@@ -80,11 +80,14 @@
             </h1>
         </div>
 
+        @auth
         <div class="flex items-center gap-4">
             <a href="/posts/create" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 Create Post
             </a>
         </div>
+                    
+        @endauth
     </div>
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
