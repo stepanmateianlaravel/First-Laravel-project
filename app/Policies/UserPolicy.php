@@ -11,12 +11,5 @@ class UserPolicy
         return $user->admin;
     }
 
-    public function delete_admin(User $user, User $model): bool
-    {
-        if($user->id == $model->id){
-            return false;
-        }else{
-            return true;
-        }
-    }
+
 }

@@ -61,4 +61,4 @@ Route::get('/admin/create', [AdminController::class, 'create'])->middleware(['au
 Route::post('/admin', [AdminController::class, 'store'])->middleware(['auth', 'verified'])->can('admin', User::class);
 Route::get('/admin/{user}/edit', [AdminController::class, 'edit'])->middleware(['auth', 'verified'])->can('admin', 'user');
 Route::patch('/admin/{user}', [AdminController::class, 'update'])->middleware(['auth', 'verified'])->can('admin', 'user');
-Route::delete('/admin/{user}', [AdminController::class, 'destroy'])->middleware(['auth', 'verified'])->can('admin', 'user')->can('delete-admin', 'user');
+Route::delete('/admin/{user}', [AdminController::class, 'destroy'])->middleware(['auth', 'verified'])->can('admin', 'user');

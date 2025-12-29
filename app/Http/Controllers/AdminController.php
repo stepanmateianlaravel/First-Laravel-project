@@ -21,6 +21,11 @@ class AdminController extends Controller
 
     public function edit(User $user)
     {
+
+        // can't edit itself if he is an admin
+              if (FacadesAuth::user()->id === $user->id) {
+        return back()->with('error', 'You are not allowed to edit yourself.');
+    }
         return view('admin.user-edit', [
             'user' => $user
         ]);
@@ -28,7 +33,10 @@ class AdminController extends Controller
 
     public function update(User $user)
     {
-        // authorize (has to be an admin)
+        // authorize (has to be an admin and can't edit itself)
+    if (FacadesAuth::user()->id === $user->id) {
+        return back()->with('error', 'Suicide prevention: you are not allowed to delete yourself.');
+    }
         // validate
         request()->validate([
             'first_name' => ['required', 'min:3'],
@@ -92,8 +100,10 @@ class AdminController extends Controller
 
     public function destroy(User $user)
     {
-        // authorize (has to be an admin)
-
+        // authorize (has to be an admin and it can't delete itself)
+      if (FacadesAuth::user()->id === $user->id) {
+        return back()->with('error', 'Suicide prevention: you are not allowed to delete yourself.');
+    }
         // delete the user
         $user->delete();
         // redirect
